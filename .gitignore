@@ -1,0 +1,4 @@
+
+*.class
+
+.settings/ncplugin.export.patchjar.NCPatchPropertyStore.prefs

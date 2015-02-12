@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="component">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="celllist"/>
+        <xs:element ref="connectlist"/>
+        <xs:element ref="refdepends"/>
+        <xs:element ref="refdependLoseIDs"/>
+        <xs:element ref="cellRemoveLog"/>
+        <xs:element ref="rulers"/>
+      </xs:sequence>
+      <xs:attribute name="conRouterType" use="required" type="xs:NCName"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fromSourceBmf" use="required" type="xs:boolean"/>
+      <xs:attribute name="gencodestyle" use="required" type="xs:NCName"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="isbizmodel" use="required" type="xs:boolean"/>
+      <xs:attribute name="mainEntity" use="required"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="namespace" use="required" type="xs:NCName"/>
+      <xs:attribute name="ownModule" use="required" type="xs:NCName"/>
+      <xs:attribute name="preLoad" use="required" type="xs:boolean"/>
+      <xs:attribute name="resModuleName" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="version" use="required" type="xs:integer"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="celllist">
+    <xs:complexType>
+      <xs:sequence>
+      	<xs:choice maxOccurs="unbounded">
+          <xs:element ref="Reference"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="Enumerate"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="entity"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="busioperation"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="opinterface"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reference">
+    <xs:complexType>
+      <xs:attribute name="componentID" use="required"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fullClassName" use="required" type="xs:NCName"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="mdFilePath" use="required"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="moduleName" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="refId" use="required"/>
+      <xs:attribute name="resid" use="required"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Enumerate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="enumitemlist"/>
+      </xs:sequence>
+      <xs:attribute name="componentID" use="required"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="dataType" use="required" type="xs:NCName"/>
+      <xs:attribute name="dbtype" use="required" type="xs:NCName"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fullClassName" use="required" type="xs:NCName"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="modInfoClassName" use="required"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="typeDisplayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="typeName" use="required" type="xs:NCName"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enumitemlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="enumitem"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enumitem">
+    <xs:complexType>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="enumDisplay" use="required" type="xs:NCName"/>
+      <xs:attribute name="enumID" use="required"/>
+      <xs:attribute name="enumValue" use="required" type="xs:string"/>
+      <xs:attribute name="hidden" use="required" type="xs:boolean"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="sequence" use="required" type="xs:integer"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="attributelist"/>
+        <xs:element ref="operationlist"/>
+        <xs:element ref="busiitfs"/>
+        <xs:element ref="busimaps"/>
+        <xs:element ref="canzhaolist"/>
+        <xs:element ref="accessor"/>
+      </xs:sequence>
+      <xs:attribute name="accessorClassName" use="required"/>
+      <xs:attribute name="bizItfImpClassName" use="required"/>
+      <xs:attribute name="componentID" use="required"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="czlist" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fullClassName" use="required" type="xs:NCName"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="isAuthen" use="required" type="xs:boolean"/>
+      <xs:attribute name="isCreateSQL" use="required" type="xs:boolean"/>
+      <xs:attribute name="isExtendBean" use="required" type="xs:boolean"/>
+      <xs:attribute name="isPrimary" use="required" type="xs:boolean"/>
+      <xs:attribute name="keyAttributeId" use="required"/>
+      <xs:attribute name="modInfoClassName" use="required"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="stereoType" use="required"/>
+      <xs:attribute name="tableName" use="required" type="xs:NCName"/>
+      <xs:attribute name="userDefClassName" use="required"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attributelist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="attribute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attribute">
+    <xs:complexType>
+      <xs:attribute name="accessStrategy" use="required"/>
+      <xs:attribute name="accesspower" use="required" type="xs:boolean"/>
+      <xs:attribute name="accesspowergroup" use="required"/>
+      <xs:attribute name="calculation" use="required" type="xs:boolean"/>
+      <xs:attribute name="classID" use="required"/>
+      <xs:attribute name="dataType" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="dataTypeStyle" use="required" type="xs:NCName"/>
+      <xs:attribute name="dbtype" use="required"/>
+      <xs:attribute name="defaultValue" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="dynamic" use="required" type="xs:boolean"/>
+      <xs:attribute name="dynamicTable" use="required"/>
+      <xs:attribute name="fieldName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fieldType" use="required"/>
+      <xs:attribute name="fixedLength" use="required" type="xs:boolean"/>
+      <xs:attribute name="forLocale" use="required" type="xs:boolean"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="isActive" use="required" type="xs:boolean"/>
+      <xs:attribute name="isAuthorization" use="required" type="xs:boolean"/>
+      <xs:attribute name="isDefaultDimensionAttribute" use="required" type="xs:boolean"/>
+      <xs:attribute name="isDefaultMeasureAttribute" use="required" type="xs:boolean"/>
+      <xs:attribute name="isFeature" use="required" type="xs:boolean"/>
+      <xs:attribute name="isGlobalization" use="required" type="xs:boolean"/>
+      <xs:attribute name="isHide" use="required" type="xs:boolean"/>
+      <xs:attribute name="isKey" use="required" type="xs:boolean"/>
+      <xs:attribute name="isNullable" use="required" type="xs:boolean"/>
+      <xs:attribute name="isReadOnly" use="required" type="xs:boolean"/>
+      <xs:attribute name="isShare" use="required" type="xs:boolean"/>
+      <xs:attribute name="length" use="required"/>
+      <xs:attribute name="maxValue" use="required"/>
+      <xs:attribute name="minValue" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="notSerialize" use="required" type="xs:boolean"/>
+      <xs:attribute name="precise" use="required"/>
+      <xs:attribute name="refModelName" use="required"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="sequence" use="required" type="xs:integer"/>
+      <xs:attribute name="typeDisplayName" use="required"/>
+      <xs:attribute name="typeName" use="required" type="xs:NCName"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="busiitfs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="itfid"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="itfid" type="xs:string"/>
+  <xs:element name="busimaps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="busimap"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="busimap">
+    <xs:complexType>
+      <xs:attribute name="attrid" use="required"/>
+      <xs:attribute name="attrpath" use="required"/>
+      <xs:attribute name="attrpathid" use="required"/>
+      <xs:attribute name="busiitfattrid" use="required"/>
+      <xs:attribute name="busiitfid" use="required"/>
+      <xs:attribute name="cellid" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="canzhaolist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="canzhao"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="canzhao">
+    <xs:complexType>
+      <xs:attribute name="cellid" use="required"/>
+      <xs:attribute name="isdefault" use="required" type="xs:boolean"/>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="accessor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="properties"/>
+      </xs:sequence>
+      <xs:attribute name="classFullname" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="properties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="property"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:attribute name="classid" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="sequence" use="required" type="xs:integer"/>
+      <xs:attribute name="value" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="busioperation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="refoperationlist"/>
+      </xs:sequence>
+      <xs:attribute name="componentID" use="required"/>
+      <xs:attribute name="createIndustry" use="required" type="xs:integer"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="dataType" use="required"/>
+      <xs:attribute name="dbtype" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fullClassName" use="required"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="industryChanged" use="required" type="xs:boolean"/>
+      <xs:attribute name="isAuthorization" use="required" type="xs:boolean"/>
+      <xs:attribute name="isBusiActivity" use="required" type="xs:boolean"/>
+      <xs:attribute name="isSource" use="required" type="xs:boolean"/>
+      <xs:attribute name="logtype" use="required" type="xs:NCName"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyIndustry" use="required" type="xs:integer"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="needlog" use="required" type="xs:boolean"/>
+      <xs:attribute name="resid" use="required"/>
+      <xs:attribute name="typeDisplayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="typeName" use="required" type="xs:NCName"/>
+      <xs:attribute name="version" use="required"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="refoperationlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="refoperation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="refoperation">
+    <xs:complexType>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="industry" use="required" type="xs:integer"/>
+      <xs:attribute name="isAuthorization" use="required" type="xs:boolean"/>
+      <xs:attribute name="isSource" use="required" type="xs:boolean"/>
+      <xs:attribute name="opItfID" use="required"/>
+      <xs:attribute name="ownerElementID" use="required"/>
+      <xs:attribute name="versiontype" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="opinterface">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="operationlist"/>
+        <xs:element ref="opImpllist"/>
+      </xs:sequence>
+      <xs:attribute name="componentID" use="required"/>
+      <xs:attribute name="createIndustry" use="required" type="xs:integer"/>
+      <xs:attribute name="createTime" use="required"/>
+      <xs:attribute name="creator" use="required"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="fullClassName" use="required"/>
+      <xs:attribute name="height" use="required" type="xs:integer"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="implClsName" use="required"/>
+      <xs:attribute name="industryChanged" use="required" type="xs:boolean"/>
+      <xs:attribute name="isAuthorization" use="required" type="xs:boolean"/>
+      <xs:attribute name="isBusiActivity" use="required" type="xs:boolean"/>
+      <xs:attribute name="isBusiOperation" use="required" type="xs:boolean"/>
+      <xs:attribute name="isSource" use="required" type="xs:boolean"/>
+      <xs:attribute name="modifier" use="required"/>
+      <xs:attribute name="modifyIndustry" use="required" type="xs:integer"/>
+      <xs:attribute name="modifyTime" use="required"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="remote" use="required" type="xs:boolean"/>
+      <xs:attribute name="resid" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="singleton" use="required" type="xs:boolean"/>
+      <xs:attribute name="transprop" use="required" type="xs:NCName"/>
+      <xs:attribute name="version" use="required"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+      <xs:attribute name="width" use="required" type="xs:integer"/>
+      <xs:attribute name="x" use="required" type="xs:integer"/>
+      <xs:attribute name="y" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="opImpllist">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="connectlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="dependConnection"/>
+        <xs:element maxOccurs="unbounded" ref="busiitfconnection"/>
+        <xs:element maxOccurs="unbounded" ref="AggregationRelation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dependConnection">
+    <xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="accessor"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="componentID" use="required" />
+    	<xs:attribute name="createIndustry" use="required"
+    		type="xs:integer" />
+    	<xs:attribute name="createTime" use="required" />
+    	<xs:attribute name="creator" use="required" />
+    	<xs:attribute name="description" use="required" />
+    	<xs:attribute name="displayName" use="required" />
+    	<xs:attribute name="help" use="required" />
+    	<xs:attribute name="id" use="required" />
+    	<xs:attribute name="industryChanged" use="required"
+    		type="xs:boolean" />
+    	<xs:attribute name="isSource" use="required" type="xs:boolean" />
+    	<xs:attribute name="modifier" use="required" />
+    	<xs:attribute name="modifyIndustry" use="required"
+    		type="xs:integer" />
+    	<xs:attribute name="modifyTime" use="required" />
+    	<xs:attribute name="name" use="required" />
+    	<xs:attribute name="realsource" use="required" />
+    	<xs:attribute name="realtarget" use="required" />
+    	<xs:attribute name="source" use="required" />
+    	<xs:attribute name="target" use="required" />
+    	<xs:attribute name="versionType" use="required"
+    		type="xs:integer" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="busiitfconnection">
+    <xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="points"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="bizItfImpClassName" use="required" />
+    	<xs:attribute name="componentID" use="required" />
+    	<xs:attribute name="createTime" use="required" />
+    	<xs:attribute name="creator" use="required" />
+    	<xs:attribute name="description" use="required" />
+    	<xs:attribute name="displayName" use="required" />
+    	<xs:attribute name="help" use="required" />
+    	<xs:attribute name="id" use="required" />
+    	<xs:attribute name="modifier" use="required" />
+    	<xs:attribute name="modifyTime" use="required" />
+    	<xs:attribute name="name" use="required" />
+    	<xs:attribute name="realsource" use="required" />
+    	<xs:attribute name="realtarget" use="required" />
+    	<xs:attribute name="source" use="required" />
+    	<xs:attribute name="target" use="required" />
+    	<xs:attribute name="versionType" use="required"
+    		type="xs:integer" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggregationRelation">
+    <xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="points"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="componentID" use="required" />
+    	<xs:attribute name="createTime" use="required" />
+    	<xs:attribute name="creator" use="required" />
+    	<xs:attribute name="description" use="required" />
+    	<xs:attribute name="displayName" use="required" />
+    	<xs:attribute name="help" use="required" />
+    	<xs:attribute name="id" use="required" />
+    	<xs:attribute name="modifier" use="required" />
+    	<xs:attribute name="modifyTime" use="required" />
+    	<xs:attribute name="name" use="required" />
+    	<xs:attribute name="realsource" use="required" />
+    	<xs:attribute name="realtarget" use="required" />
+    	<xs:attribute name="source" use="required" />
+    	<xs:attribute name="sourceConstraint" use="required"
+    		type="xs:integer" />
+    	<xs:attribute name="srcAttributeid" use="required" />
+    	<xs:attribute name="target" use="required" />
+    	<xs:attribute name="targetConstraint" use="required"
+    		type="xs:NMTOKEN" />
+    	<xs:attribute name="versionType" use="required"
+    		type="xs:integer" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="refdepends">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="dependfile"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dependfile">
+    <xs:complexType>
+      <xs:attribute name="entityid" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="refdependLoseIDs">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="cellRemoveLog">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="rulers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ruler"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ruler">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="guideList"/>
+      </xs:sequence>
+      <xs:attribute name="isHorizontal" use="required" type="xs:boolean"/>
+      <xs:attribute name="unit" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="guideList">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="operationlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="operation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="paramlist"/>
+      </xs:sequence>
+      <xs:attribute name="dataTypeStyle" use="required" type="xs:NCName"/>
+      <xs:attribute name="defclassname" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="forBusinessEntity" use="required" type="xs:NCName"/>
+      <xs:attribute name="help" use="required"/>
+      <xs:attribute name="id" use="required"/>
+      <xs:attribute name="isAggVOReturn" use="required" type="xs:boolean"/>
+      <xs:attribute name="isBusiActivity" use="required" type="xs:boolean"/>
+      <xs:attribute name="methodException" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="opItfID" use="required"/>
+      <xs:attribute name="ownerElementID" use="required"/>
+      <xs:attribute name="transKind" use="required" type="xs:NCName"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+      <xs:attribute name="visibility" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="paramlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="parameter"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parameter">
+    <xs:complexType>
+      <xs:attribute name="dataType" use="required" type="xs:NCName"/>
+      <xs:attribute name="dataTypeStyle" use="required" type="xs:NCName"/>
+      <xs:attribute name="dbtype" use="required" type="xs:NCName"/>
+      <xs:attribute name="description" use="required"/>
+      <xs:attribute name="displayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="isAggVO" use="required" type="xs:boolean"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="operationID" use="required"/>
+      <xs:attribute name="paramTypeForLog" use="required" type="xs:integer"/>
+      <xs:attribute name="paramdefclassname" use="required"/>
+      <xs:attribute name="sequence" use="required" type="xs:integer"/>
+      <xs:attribute name="typeDisplayName" use="required" type="xs:NCName"/>
+      <xs:attribute name="typeName" use="required" type="xs:NCName"/>
+      <xs:attribute name="versionType" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="points" type="points"></xs:element>
+  <xs:complexType name="points"></xs:complexType>
+</xs:schema>
