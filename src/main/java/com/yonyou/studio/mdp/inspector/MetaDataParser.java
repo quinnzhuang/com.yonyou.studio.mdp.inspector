@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector;
+﻿package com.yonyou.studio.mdp.inspector;
 
 import java.io.File;
 

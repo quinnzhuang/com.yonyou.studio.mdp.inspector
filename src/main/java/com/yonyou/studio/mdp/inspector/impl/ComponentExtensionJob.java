@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector.impl;
+锘縫ackage com.yonyou.studio.mdp.inspector.impl;
 
 import java.io.File;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -7,7 +7,7 @@ import com.yonyou.studio.mdp.inspector.AnalyseContext;
 
 public class ComponentExtensionJob extends MetaDataExtensionJob {
 
-	private static final String COMPONENT_MESSAGE = "组件%s存在垂直扩展现象，文件如下：";
+	private static final String COMPONENT_MESSAGE = "缁勪欢%s瀛樺湪鍨傜洿鎵╁睍鐜拌薄锛屾枃浠跺涓嬶細";
 
 	@Override
 	protected String getFormatMessage() {

@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector.impl;
+锘縫ackage com.yonyou.studio.mdp.inspector.impl;
 
 import java.io.File;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -7,7 +7,7 @@ import com.yonyou.studio.mdp.inspector.AnalyseContext;
 
 public class TableExtensionJob extends MetaDataExtensionJob {
 
-	private static final String TABLE_MESSAGE = "表名%s存在水平扩展现象，文件如下：";
+	private static final String TABLE_MESSAGE = "琛ㄥ悕%s瀛樺湪姘村钩鎵╁睍鐜拌薄锛屾枃浠跺涓嬶細";
 
 	@Override
 	protected String getFormatMessage() {

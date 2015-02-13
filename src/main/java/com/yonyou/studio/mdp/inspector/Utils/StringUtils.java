@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector.Utils;
+﻿package com.yonyou.studio.mdp.inspector.Utils;
 
 public class StringUtils {
 	

@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector.defination;
+ï»¿package com.yonyou.studio.mdp.inspector.defination;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -42,7 +42,7 @@ public class ComponentDefImpl implements ComponentDefination {
 			}
 		}
 		throw new RuntimeException(String.format(
-				"Ã»ÓĞÓë×é¼şÖĞmainEntityÊôĞÔÏàÆ¥ÅäµÄÊµÌå¡£ÎÄ¼şÂ·¾¶£º%s£»×é¼şid£º%s",
+				"æ²¡æœ‰ä¸ç»„ä»¶ä¸­mainEntityå±æ€§ç›¸åŒ¹é…çš„å®ä½“ã€‚æ–‡ä»¶è·¯å¾„ï¼š%sï¼›ç»„ä»¶idï¼š%s",
 				file.getAbsolutePath(), component.getId()));
 	}
 

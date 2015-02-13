@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector;
+﻿package com.yonyou.studio.mdp.inspector;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector.interceptors;
+ï»¿package com.yonyou.studio.mdp.inspector.interceptors;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ public class ComponentFilterInterceptor implements JobInterceptor {
 	public boolean before(AnalyseContext context, File file) {
 		ComponentDefination def = context.componentDefination(file);
 		if (StringUtils.isEmpty(def.getComponent().getId())) {
-			throw new RuntimeException(String.format("ÔªÊı¾İÎÄ¼ş:%s¸ñÊ½´íÎó£¬×é¼şid²»¿ÉÎª¿Õ",
+			throw new RuntimeException(String.format("å…ƒæ•°æ®æ–‡ä»¶:%sæ ¼å¼é”™è¯¯ï¼Œç»„ä»¶idä¸å¯ä¸ºç©º",
 					file));
 		}
 		return StringUtils.contains(def.getComponent().getId(),

@@ -1,4 +1,4 @@
-package com.yonyou.studio.mdp.inspector;
+ï»¿package com.yonyou.studio.mdp.inspector;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -53,38 +53,38 @@ public class Analyser {
 
 	public Analyser() {
 		JobRegistration componentExtJobReg = new JobRegistration(
-				new ComponentExtensionJob(), "´¹Ö±À©Õ¹·ÖÎö", "");
+				new ComponentExtensionJob(), "å‚ç›´æ‰©å±•åˆ†æ", "");
 		componentExtJobReg.registInterceptor(new ComponentFilterInterceptor());
 		jobRegistry.registJob(componentExtJobReg);
 		JobRegistration tableExtJobReg = new JobRegistration(
-				new TableExtensionJob(), "Ë®Æ½À©Õ¹·ÖÎö", "");
+				new TableExtensionJob(), "æ°´å¹³æ‰©å±•åˆ†æ", "");
 		tableExtJobReg.registInterceptor(new TableFilterInterceptor());
 		jobRegistry.registJob(tableExtJobReg);
 	}
 
 	public void analyze(File dir, String condition) {
 		if (!dir.isDirectory()) {
-			ui.output("ÇëÖ¸¶¨Ò»¸öÎÄ¼ş¼Ğ½øĞĞ·ÖÎö¡£");
+			ui.output("è¯·æŒ‡å®šä¸€ä¸ªæ–‡ä»¶å¤¹è¿›è¡Œåˆ†æã€‚");
 		}
-		ui.output(String.format("######¿ªÊ¼·ÖÎöÎÄ¼ş¼Ğ:%sÏÂÎÄ¼ş######",
+		ui.output(String.format("######å¼€å§‹åˆ†ææ–‡ä»¶å¤¹:%sä¸‹æ–‡ä»¶######",
 				dir.getAbsoluteFile()));
 		AnalyseContext context = new AnalyseContext(condition);
 		context.setUi(ui);
 		collectCommands(dir, context);
-		ui.output(String.format("¹²ÕÒµ½%d¸öÎÄ¼ş£¬¿ªÊ¼·ÖÎöÎÄ¼şÄÚÈİ", context.getParseJobs()
+		ui.output(String.format("å…±æ‰¾åˆ°%dä¸ªæ–‡ä»¶ï¼Œå¼€å§‹åˆ†ææ–‡ä»¶å†…å®¹", context.getParseJobs()
 				.size()));
 		try {
 			executor.invokeAll(context.getParseJobs());
 		} catch (Exception e) {
-			ui.output(String.format("½âÎöÔªÊı¾İÎÄ¼ş³ö´í¡£´íÎóĞÅÏ¢£º%s", e.getMessage()));
+			ui.output(String.format("è§£æå…ƒæ•°æ®æ–‡ä»¶å‡ºé”™ã€‚é”™è¯¯ä¿¡æ¯ï¼š%s", e.getMessage()));
 		}
 		try {
 			executor.invokeAll(context.getJobs());
 		} catch (InterruptedException e) {
-			ui.output(String.format("Ö´ĞĞ·ÖÎö³ö´í¡£´íÎóĞÅÏ¢£º%s", e.getMessage()));
+			ui.output(String.format("æ‰§è¡Œåˆ†æå‡ºé”™ã€‚é”™è¯¯ä¿¡æ¯ï¼š%s", e.getMessage()));
 		}
-		ui.output("######################·ÖÎöÍê±Ï#########################");
-		ui.output("####################¿ªÊ¼Êä³ö½á¹û#########################");
+		ui.output("######################åˆ†æå®Œæ¯•#########################");
+		ui.output("####################å¼€å§‹è¾“å‡ºç»“æœ#########################");
 		outputResult(context);
 	}
 
@@ -117,7 +117,7 @@ public class Analyser {
 										}
 									} catch (Exception e) {
 										ui.output(String
-												.format("Ö´ĞĞ·ÖÎö¹ı³Ì³ö´í£¬ ³ö´íµÄ·ÖÎö¹ı³ÌÎª£º%s£¬ÎÄ¼şÃû£º%s£¬´íÎóĞÅÏ¢£º%s",
+												.format("æ‰§è¡Œåˆ†æè¿‡ç¨‹å‡ºé”™ï¼Œ å‡ºé”™çš„åˆ†æè¿‡ç¨‹ä¸ºï¼š%sï¼Œæ–‡ä»¶åï¼š%sï¼Œé”™è¯¯ä¿¡æ¯ï¼š%s",
 														registration.getName(),
 														file.getAbsolutePath(),
 														e.getMessage()));
@@ -175,7 +175,7 @@ public class Analyser {
 				}
 				return success;
 			} catch (Exception e) {
-				ui.output(String.format("½âÎöÎÄ¼ş£º%s³ö´í¡£´íÎó£º%s",
+				ui.output(String.format("è§£ææ–‡ä»¶ï¼š%så‡ºé”™ã€‚é”™è¯¯ï¼š%s",
 						file.getAbsolutePath(), e.getMessage()));
 				return false;
 			}
@@ -194,7 +194,7 @@ public class Analyser {
 
 	public static void main(String[] args) {
 		if (args == null || args.length < 1) {
-			System.out.println("ÇëÖ¸¶¨Òª·ÖÎöµÄÄ¿Â¼ÒÔ¼°¹ıÂËÌõ¼ş£¬ÒÔ¿Õ¸ñ·Ö¿ª¡£ÀıÈç£º");
+			System.out.println("è¯·æŒ‡å®šè¦åˆ†æçš„ç›®å½•ä»¥åŠè¿‡æ»¤æ¡ä»¶ï¼Œä»¥ç©ºæ ¼åˆ†å¼€ã€‚ä¾‹å¦‚ï¼š");
 			System.out.println("	D:\\uap\\modules [test]");
 			return;
 		}
